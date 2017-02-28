@@ -4,10 +4,17 @@ import java.awt.EventQueue;
 
 import vista.TresNRayaUI;
 
+
+
 @SuppressWarnings("serial")
 public class Principal extends TresNRayaUI{
-
+	
+	protected int tablero[][] = new int[3][3];
+	
 public Principal(){
+	
+	
+	
 	
 	
 }
