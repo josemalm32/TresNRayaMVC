@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TresNRayaUI extends JFrame {
 
@@ -43,37 +45,47 @@ public class TresNRayaUI extends JFrame {
 		lblTresNRaya.setBounds(12, 13, 512, 65);
 		contentPane.add(lblTresNRaya);
 		
+	
+		
 		
 		cerocero.setBounds(12, 127, 122, 109);
 		contentPane.add(cerocero);
+		
 		
 		
 		cerouno.setBounds(202, 127, 122, 109);
 		contentPane.add(cerouno);
 		
 		
+		
 		cerodos.setBounds(402, 127, 122, 109);
 		contentPane.add(cerodos);
+		
 		
 		
 		unocero.setBounds(12, 256, 122, 109);
 		contentPane.add(unocero);
 		
 		
+		
 		unouno.setBounds(202, 256, 122, 109);
 		contentPane.add(unouno);
+		
 		
 		
 		unodos.setBounds(402, 256, 122, 109);
 		contentPane.add(unodos);
 		
 		
+		
 		doscero.setBounds(12, 383, 122, 109);
 		contentPane.add(doscero);
 		
 		
+		
 		dosuno.setBounds(202, 383, 122, 109);
 		contentPane.add(dosuno);
+		
 		
 		
 		dosdos.setBounds(402, 383, 122, 109);
