@@ -1,58 +1,109 @@
 package controlador;
 
-public class Control {
+import vista.TresNRayaUI;
+
+@SuppressWarnings("serial")
+public class Control extends TresNRayaUI{
 
 	private int posicionantiguax;
 	private int posicionantiguay;
 	private int tablero[][] = {{0,0,0},{0,2,0},{0,0,0}};
-	private int posicionx;
-	private int posiciony;
 	private int turno = 1;
-	private boolean banderaborrar;
+	private boolean banderaborrar = true;
+	//Principal principal = new Principal();
 	
+	//Turno 0 Nadie, Turno 1 X, Turno 2 O
 	public String evento (int posicionx, int posiciony, String contenido){
 		
-		if (turno<=5 && tablero[posicionx][posiciony] == 0 && !banderaborrar){
-			System.out.println(devuelveXO(turno));
-			colocarFicha(tablero, turno, posicionx, posiciony);	
-			String letra = devuelveXO(turno);
-			if (comprobarLinea(tablero)){
-				System.out.println("GAnador" + letra);
-			}
-			turno++;
-			return letra;
-			}else {
-				System.out.println(devuelveXO(turno));
-			if(comprobarEncerrada(tablero, posicionx, posiciony) && !banderaborrar){
-				posicionantiguax = posicionx;
-				posicionantiguay = posiciony;
-				borrarFicha(tablero, posicionx, posiciony);
-				banderaborrar = true;
-				return "";
-			}else {
-				if(comprobarContigua(posicionantiguax, posicionantiguay, posicionx, posiciony, tablero)){
-					
-					colocarFicha(tablero, turno, posicionx, posiciony);
-					String letra = devuelveXO(turno);
-					banderaborrar = false;
-					turno++;
-					if(comprobarLinea(tablero)){
-						System.out.println("Ganador la " + letra);
-					}
+		
+		//Bloque Uno.. Hasta el sexto movimiento juego normal.. Pon pon y pon
+		if(turno<=5){
+			//Comprobamos que la casilla este vacia...
+			if(casillaVacia(posicionx, posiciony, tablero)){
+				tablero = colocarFicha(tablero, turno, posicionx, posiciony);	
+				String letra = devuelveXO(turno);
+				if (comprobarLinea(tablero)){
+					System.out.println("El ganador es la: " + letra);
 					return letra;
+				}
+				turno++;
+				System.out.println("Turno de la: " + devuelveXO(turno));
+				return letra;
+			}else {
+				System.out.println("Esta Casilla No esta Libre!!!, Prueba con otra..");
+				return contenido;
+			}
+		//Bloque Dos.. A partir del sexto movimiento, Hay que quitar y poner y comprobar.	
+		}else{
+			
+			//Comprobamos si podemos borrar o hay que poner una ficha nueva
+			if(banderaborrar){
+			//Comprobamos que la ficha es nuestra... y que no 
+			if(compruebaFicha(tablero, turno, posicionx, posiciony)){
+				if(comprobarEncerrada(tablero, posicionx, posiciony)){
+					borrarFicha(tablero, posicionx, posiciony);
+					posicionantiguax = posicionx;
+					posicionantiguay = posiciony;
+					banderaborrar = false;
+					System.out.println("Puedes Selecionar una posicion nueva.");
+					return "";
+				}else {
+					System.out.println("Ummm.. la ficha esta encerrada :(");
+					return contenido;
 				}
 				
 				
+			}else {
+				System.out.println("Ummm.. la ficha no es tuya");
+				return contenido;
 			}
 			
-				
-				
-			return contenido;
+		}else  {
+			if(comprobarContigua(posicionantiguax, posicionantiguay, posicionx, posiciony, tablero)){
+				tablero = colocarFicha(tablero, turno, posicionx, posiciony);
+				String letra =  devuelveXO(turno);
+				if (comprobarLinea(tablero)){
+					System.out.println("El ganador es la: " + letra);
+					return letra;
+					//Molaria la idea de enable(false) a la botonera.. 
+				}
+				turno++;
+				System.out.println("Turno de la: " + devuelveXO(turno));
+				banderaborrar = true;
+				return letra;
+			}else {
+				System.out.println("La ficha no puede ser colocada aqui.. No es contigua a la posicion anterior.");
+				return contenido;
+			}			
 		}
-		
-		
+			
+		}
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//Metodos tipicos del 3 en raya.. 
+	private boolean compruebaFicha(int[][] tablero,int turno,int posicionx, int posiciony){
+		turno = turno%2;
+		switch (turno) {
+		case 0:
+			if (tablero[posicionx][posiciony]==2){
+				return true;
+			}else return false;
+		default:
+			if (tablero[posicionx][posiciony]==1){
+				return true;
+			}else return false;
+		}
+		
+	}
 	
 	private int[][] colocarFicha(int[][] tablero,int turno,int posicionx, int posiciony) {
 		if (turno%2==0){
@@ -83,7 +134,7 @@ public class Control {
 	}
 	
 	
-	private  boolean comprobarContigua(int posicionantiguax,int posicionantiguay, int posicionx,int posiciony, int [][] tablero) {
+	private boolean comprobarContigua(int posicionantiguax,int posicionantiguay, int posicionx,int posiciony, int [][] tablero) {
 		int x=posicionx-posicionantiguax,y=posiciony-posicionantiguax;
 		if(x>-2&&x<2&&y>-2&&y<2){
 			return true;
@@ -158,12 +209,14 @@ public class Control {
 		return "X";
 	}
 	
-	
+	private boolean casillaVacia(int posicionx,int posiciony, int [][] tablero){
+		return tablero[posicionx][posiciony] == 0;
+	}
 	
 	
 	private  boolean comprobarLinea(int [][] tablero) {
 		
-		if (hasThreeInAColum(tablero) || hasThreeInARowTwo(tablero) || isThreeDiagonalStraightPro(tablero)){
+		if (hasThreeInAColum(tablero) || hasThreeInARowTwo(tablero) || isThreeDiagonalStraightPro(tablero) || isThreeDiagonalInversePro(tablero)){
 			
 			return true;
 		} else return false;
