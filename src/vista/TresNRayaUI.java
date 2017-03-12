@@ -22,7 +22,7 @@ public class TresNRayaUI extends JFrame {
 	protected JButton cerouno = new JButton("");
 	protected JButton cerodos = new JButton("");
 	protected JButton unocero = new JButton("");
-	protected JButton unouno = new JButton("");
+	protected JButton unouno = new JButton("O");
 	protected JButton doscero = new JButton("");
 	protected JButton unodos = new JButton("");
 	protected JButton dosuno = new JButton("");
@@ -44,47 +44,56 @@ public class TresNRayaUI extends JFrame {
 		lblTresNRaya.setFont(new Font("Tahoma", Font.PLAIN, 35));
 		lblTresNRaya.setBounds(12, 13, 512, 65);
 		contentPane.add(lblTresNRaya);
+		cerocero.setFont(new Font("Tahoma", Font.PLAIN, 78));
 		
 	
 		
 		
 		cerocero.setBounds(12, 127, 122, 109);
 		contentPane.add(cerocero);
+		cerouno.setFont(new Font("Tahoma", Font.PLAIN, 78));
 		
 		
 		
 		cerouno.setBounds(202, 127, 122, 109);
 		contentPane.add(cerouno);
+		cerodos.setFont(new Font("Tahoma", Font.PLAIN, 78));
 		
 		
 		
 		cerodos.setBounds(402, 127, 122, 109);
 		contentPane.add(cerodos);
+		unocero.setFont(new Font("Tahoma", Font.PLAIN, 78));
 		
 		
 		
 		unocero.setBounds(12, 256, 122, 109);
 		contentPane.add(unocero);
+		unouno.setFont(new Font("Tahoma", Font.PLAIN, 78));
 		
 		
 		
 		unouno.setBounds(202, 256, 122, 109);
 		contentPane.add(unouno);
+		unodos.setFont(new Font("Tahoma", Font.PLAIN, 78));
 		
 		
 		
 		unodos.setBounds(402, 256, 122, 109);
 		contentPane.add(unodos);
+		doscero.setFont(new Font("Tahoma", Font.PLAIN, 78));
 		
 		
 		
 		doscero.setBounds(12, 383, 122, 109);
 		contentPane.add(doscero);
+		dosuno.setFont(new Font("Tahoma", Font.PLAIN, 78));
 		
 		
 		
 		dosuno.setBounds(202, 383, 122, 109);
 		contentPane.add(dosuno);
+		dosdos.setFont(new Font("Tahoma", Font.PLAIN, 78));
 		
 		
 		

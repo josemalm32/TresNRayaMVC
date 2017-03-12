@@ -11,51 +11,61 @@ import vista.TresNRayaUI;
 @SuppressWarnings("serial")
 public class Principal extends TresNRayaUI{
 	
-	protected int tablero[][] = new int[3][3];
-	protected int posicion[][] = new int [1][1];
-	protected int turno;
+	
 	
 public Principal(){
-	turno = 0;
+	
 	Control control = new Control();
 	
 	cerocero.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			
-			
-			
+	cerocero.setText(control.evento(0, 0, cerocero.getText()));
+
 		}
 	});
 	cerouno.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
+			cerouno.setText(control.evento(0, 1, cerouno.getText()));
 		}
 	});
 	cerodos.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
+			cerodos.setText(control.evento(0, 2, cerodos.getText()));
+			
 		}
 	});
 	unocero.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
+			
+			unocero.setText(control.evento(1, 0, unocero.getText()));
 		}
 	});
 	unouno.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
+		
+			unouno.setText(control.evento(1, 1, unouno.getText()));
 		}
 	});
 	unodos.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
+			unodos.setText(control.evento(1, 2, unodos.getText()));
 		}
 	});
 	doscero.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
+			doscero.setText(control.evento(2, 0, doscero.getText()));
 		}
 	});
 	dosuno.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
+			dosuno.setText(control.evento(2, 1, dosuno.getText()));
+			
 		}
 	});
 	dosdos.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
+			
+			dosdos.setText(control.evento(2, 2, dosdos.getText()));
 		}
 	});
 	
